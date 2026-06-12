@@ -103,15 +103,10 @@ Switch by position in the saved list (first user is 1):
 
 ## Adding a second account
 
-1. Open the GUI and click **+ Add user**
-2. Choose **Prepare for a new login**
-3. If your current account is not already saved, you will be offered the chance to save it first
-4. The script clears the autologin fields from `prefs`, removes dbrts, and launches Spotify, which opens the login screen
-5. Log in with the new account
-6. Close Spotify
-7. Open the GUI again, click **+ Add user**, choose **Save current account**, and give it a label
-
-From this point, both accounts appear as cards and you can switch freely.
+Open the the Account Switcher and click + Add user, then choose Prepare for a new login. If your current account is not already saved, you will be offered the chance to save it first.
+The script will clear the login fields from prefs and launch Spotify, which will open the login screen. Log in with the new account, then close Spotify.
+Open the switcher again, click + Add user, choose Save current account, and give it a label.
+From this point both accounts appear as cards and you can switch freely.
 
 
 ## Files
