@@ -16,8 +16,6 @@ If you still get an execution policy error after unblocking, open PowerShell in 
 ```powershell
 powershell -ExecutionPolicy Bypass -File ".\spotify-account-switcher.ps1"
 ```
-That runs it once without changing any system settings. If you want to be able to double-click it going forward, see [Setup](#setup).
-
 
 ## Why
 
