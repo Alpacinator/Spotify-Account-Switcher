@@ -8,7 +8,7 @@
 #     .\spotify-account-switcher.ps1
 #
 #   Switch by label (case-insensitive, no GUI):
-#     .\spotify-account-switcher.ps1 -user Aiko
+#     .\spotify-account-switcher.ps1 -user Bob
 #
 #   Switch by list position (1-based, no GUI):
 #     .\spotify-account-switcher.ps1 -userid 2
