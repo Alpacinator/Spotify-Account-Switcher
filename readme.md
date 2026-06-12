@@ -6,13 +6,13 @@ A PowerShell script for Windows that lets you save multiple Spotify desktop acco
 
 ## Why
 
-Spotify's desktop app has no built-in account switching. The only official path is to log out and log back in, which is a problem: logging out invalidates your session on the server, meaning any saved credentials become useless. If you want to switch between two accounts regularly — a personal account and a work or family account, for example — you are stuck re-entering passwords every time.
+Spotify's desktop app has no built-in account switching. The only official path is to log out and log back in, which is a problem: logging out invalidates your session on the server, meaning any saved credentials become useless. If you want to switch between two accounts regularly, a personal account and a work or family account, for example, you are stuck re-entering passwords every time.
 
 This script sidesteps that entirely. It saves each account's authentication blob directly from Spotify's local `prefs` file, then restores it when you want to switch. The server session is never touched. Your credentials stay valid indefinitely.
 
 ### Why not just use Spicetify or a browser extension?
 
-The Spotify desktop app runs in a sandboxed Chromium renderer. The authentication cookie (`sp_dc`) that controls your session is flagged `HttpOnly`, so page JavaScript cannot read or write it. The Spicetify extension environment has no filesystem access either. After extensive testing — including probing `Spicetify.Platform.Session`, the cookie store, IndexedDB, and live token swapping — none of these paths can reach the credential layer. The only thing that works is operating on the files directly, from outside the app.
+The Spotify desktop app runs in a sandboxed Chromium renderer. The authentication cookie (`sp_dc`) that controls your session is flagged `HttpOnly`, so page JavaScript cannot read or write it. The Spicetify extension environment has no filesystem access either. After extensive testing, including probing `Spicetify.Platform.Session`, the cookie store, IndexedDB, and live token swapping, none of these paths can reach the credential layer. The only thing that works is operating on the files directly, from outside the app.
 
 ---
 
@@ -45,7 +45,7 @@ When you switch to a saved account, the script:
 
 1. Stops Spotify
 2. Writes the saved credentials back into `prefs`
-3. Deletes `%LOCALAPPDATA%\Spotify\dbrts` — a session cache that overrides `prefs` on startup if left in place
+3. Deletes `%LOCALAPPDATA%\Spotify\dbrts`, a session cache that overrides `prefs` on startup if left in place
 4. Swaps the per-user data folder
 5. Restarts Spotify
 
@@ -54,8 +54,8 @@ When you switch to a saved account, the script:
 ## Requirements
 
 - Windows 10 or 11
-- Spotify desktop app installed via the **classic installer** (not the Microsoft Store version)
-- PowerShell 5.1 or later (included with Windows)
+- Spotify desktop app installed via the **classic installer** (not the Microsoft Store version, could work but didn't test it)
+- PowerShell 5.1 or later
 
 ---
 
@@ -92,10 +92,10 @@ A window appears showing all your saved account cards. Click a card to switch to
 Switch by label (case-insensitive):
 
 ```powershell
-.\spotify-account-switcher.ps1 -user Aiko
+.\spotify-account-switcher.ps1 -user Bob
 ```
 
-Switch by position in the saved list:
+Switch by position in the saved list (first user is 1):
 
 ```powershell
 .\spotify-account-switcher.ps1 -userid 2
