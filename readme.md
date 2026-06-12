@@ -2,7 +2,18 @@
 
 A PowerShell script for Windows that lets you save multiple Spotify desktop accounts and switch between them instantly, without ever clicking the logout button.
 
----
+## Quick start
+
+**If you just want to run it now**, right-click the file, choose **Run with PowerShell**, and skip everything else below.
+
+If Windows blocks it with an "execution policy" error, open PowerShell in the folder containing the script and run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ".\spotify-account-switcher.ps1"
+```
+
+That runs it once without changing any system settings. If you want to be able to double-click it going forward, see [Setup](#setup).
+
 
 ## Why
 
@@ -14,7 +25,6 @@ This script sidesteps that entirely. It saves each account's authentication blob
 
 The Spotify desktop app runs in a sandboxed Chromium renderer. The authentication cookie (`sp_dc`) that controls your session is flagged `HttpOnly`, so page JavaScript cannot read or write it. The Spicetify extension environment has no filesystem access either. After extensive testing, including probing `Spicetify.Platform.Session`, the cookie store, IndexedDB, and live token swapping, none of these paths can reach the credential layer. The only thing that works is operating on the files directly, from outside the app.
 
----
 
 ## How it works
 
@@ -49,7 +59,6 @@ When you switch to a saved account, the script:
 4. Swaps the per-user data folder
 5. Restarts Spotify
 
----
 
 ## Requirements
 
@@ -57,7 +66,6 @@ When you switch to a saved account, the script:
 - Spotify desktop app installed via the **classic installer** (not the Microsoft Store version, could work but didn't test it)
 - PowerShell 5.1 or later
 
----
 
 ## Setup
 
@@ -73,7 +81,6 @@ Or to run it just once without changing policy:
 powershell -ExecutionPolicy Bypass -File ".\spotify-account-switcher.ps1"
 ```
 
----
 
 ## Usage
 
@@ -101,34 +108,19 @@ Switch by position in the saved list (first user is 1):
 .\spotify-account-switcher.ps1 -userid 2
 ```
 
----
 
 ## Adding a second account
 
 1. Open the GUI and click **+ Add user**
 2. Choose **Prepare for a new login**
 3. If your current account is not already saved, you will be offered the chance to save it first
-4. The script clears the autologin fields from `prefs` and launches Spotify, which opens the login screen
+4. The script clears the autologin fields from `prefs`, removes dbrts, and launches Spotify, which opens the login screen
 5. Log in with the new account
 6. Close Spotify
 7. Open the GUI again, click **+ Add user**, choose **Save current account**, and give it a label
 
 From this point, both accounts appear as cards and you can switch freely.
 
----
-
-## GUI overview
-
-| Element | What it does |
-|---|---|
-| Account card | Click to switch to that account |
-| Pencil icon | Rename the profile label |
-| Delete icon | Remove the saved profile |
-| + Add user | Save the current account or prepare for a new login |
-| Run at startup | Creates a shortcut in the Windows Startup folder so the GUI opens at login |
-| Troubleshoot | Shows the current `prefs` auth fields and the stored credentials for each profile, with a copy button |
-
----
 
 ## Files
 
@@ -147,5 +139,5 @@ Nothing is written outside of the Spotify data directory and the Windows Startup
 ## Caveats
 
 - Only works with the **classic installer** build of Spotify. The Microsoft Store version stores data in a different location under `%LOCALAPPDATA%\Packages\` and has not been tested.
-- If Spotify pushes an update that changes how it stores credentials, the blob format may change and saved profiles may stop working. Re-saving the profile after logging in again will fix it.
+- If Spotify pushes an update that changes how it stores credentials, the blob format may change and saved profiles may stop working. Re-saving the profile after logging in again may fix it.
 - The script must be run from its original path if you use the startup option, since the shortcut points to the file's location at the time you enabled it. If you move the file, disable and re-enable the startup checkbox.
