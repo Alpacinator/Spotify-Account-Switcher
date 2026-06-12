@@ -70,25 +70,7 @@ When you switch to a saved account, the script:
 - Spotify desktop app installed via the **classic installer** (not the Microsoft Store version, could work but didn't test it)
 - PowerShell 5.1 or later
 
-
-## Setup
-
-**Allow local scripts to run** (one-time, only if you have not done this before):
-
-```powershell
-Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-```
-
-Or to run it just once without changing policy:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File ".\spotify-account-switcher.ps1"
-```
-
-
 ## Usage
-
-### GUI
 
 Double-click the script or run it from PowerShell with no arguments:
 
@@ -97,6 +79,12 @@ Double-click the script or run it from PowerShell with no arguments:
 ```
 
 A window appears showing all your saved account cards. Click a card to switch to that account. Spotify will stop and restart automatically.
+
+If that doesn't work, try launching it like this:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ".\spotify-account-switcher.ps1"
+```
 
 ### Command line
 
