@@ -1,19 +1,21 @@
 # Spotify Account Switcher
-
 A PowerShell script for Windows that lets you save multiple Spotify desktop accounts and switch between them instantly, without ever clicking the logout button.
 
 ## Quick start
-
 **[Download spotify-account-switcher.ps1](https://github.com/Alpacinator/Spotify-Account-Switcher/releases/latest/download/spotify-account-switcher.ps1)**
 
-**If you just want to run it now**, right-click the file, choose **Run with PowerShell**, and skip everything else below.
+Before running, you need to unblock the file, because Windows flags scripts downloaded from the internet as untrusted:
 
-If Windows blocks it with an "execution policy" error, open PowerShell in the folder containing the script and run:
+1. Right-click the downloaded file and choose **Properties**
+2. At the bottom of the General tab, check **Unblock**
+3. Click **OK**
 
+After that, right-click the file and choose **Run with PowerShell**.
+
+If you still get an execution policy error after unblocking, open PowerShell in the folder containing the script and run:
 ```powershell
 powershell -ExecutionPolicy Bypass -File ".\spotify-account-switcher.ps1"
 ```
-
 That runs it once without changing any system settings. If you want to be able to double-click it going forward, see [Setup](#setup).
 
 
