@@ -4,6 +4,8 @@ A PowerShell script for Windows that lets you save multiple Spotify desktop acco
 
 ## Quick start
 
+**[Download spotify-account-switcher.ps1](https://github.com/Alpacinator/Spotify-Account-Switcher/releases/latest/download/spotify-account-switcher.ps1)**
+
 **If you just want to run it now**, right-click the file, choose **Run with PowerShell**, and skip everything else below.
 
 If Windows blocks it with an "execution policy" error, open PowerShell in the folder containing the script and run:
