@@ -10,7 +10,7 @@
 #   Switch by label (case-insensitive, no GUI):
 #     .\spotify-account-switcher.ps1 -user Bob
 #
-#   Switch by list position (1-based, no GUI):
+#   Switch by list position (1 for the first user, 2 for the second user, etc, no GUI):
 #     .\spotify-account-switcher.ps1 -userid 2
 
 param(
